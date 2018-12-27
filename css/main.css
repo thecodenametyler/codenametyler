@@ -1073,6 +1073,18 @@ header .social-links ul li a:focus {
 	font-size: 1.8rem;
 	max-width: 400px;
 }
+.main-content-tablecell p a {
+	color: rgba(255, 255, 255, 0.5);
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+.main-content-tablecell p a:hover,
+.main-content-tablecell p a:active {
+	color: rgba(255, 255, 255, 1);
+}
 
 .scroll-icon {
 	position: absolute;
