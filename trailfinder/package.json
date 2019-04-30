@@ -1,0 +1,14 @@
+{
+  "name": "trailfinder",
+  "version": "1.0.0",
+  "description": "spot a trail",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "codename-stackoverflow": "^1.0.1"
+  }
+}

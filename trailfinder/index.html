@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+   <!--- basic page needs
+   ================================================== -->
+   <meta charset="utf-8">
+	<title>CodeNameTyler - Coming soon</title>
+	<meta name="description" content="Join me in my adventures to a new universe of mountain bike worklog, trails, downhill, reviews...">
+	<meta property="og:title" content="CodeNameTyler" />
+	<meta property="og:type" content="video.movie" />
+	<meta property="og:url" content="http://codenametyler.com/" />
+	<meta property="og:image" content="/images/slides/01.jpg" />
+	<meta name="author" content="thecodenametyler">
+
+   <!-- mobile specific metas
+   ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+ 	<!-- CSS
+   ================================================== -->
+	<!-- <link rel="stylesheet" href="css/leaflet.css" /> -->
+   <link rel="stylesheet" href="css/main.css">
+   <!-- script
+   ================================================== -->
+	<script src="js/modernizr.js"></script>
+	<!-- <script src="js/leaflet.js"></script> -->
+
+	<script src='https://static-assets.mapbox.com/gl-pricing/dist/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+
+   <!-- favicons
+	================================================== -->
+	<link rel="icon" type="image/png" href="favicon.png">
+
+</head>
+
+<body id="top">
+
+	<!-- header 
+   ================================================== -->
+   <header>
+
+   	<div class="row">
+   		<div class="logo">
+	         <a href="index.html">codenametyler</a>
+	      </div> 
+
+			<div class="social-links">
+			   <ul>
+					<li><a href="https://www.facebook.com/CodeNameTyler/"><i class="fa fa-facebook"></i></a></li>
+					<li><a href="https://www.youtube.com/channel/UC7u8B07W1T484w3FcBJFupA"><i class="fa fa-youtube"></i></a></li>			   
+				   <li><a href="https://www.instagram.com/codenametyler/"><i class="fa fa-instagram"></i></a></li> 			     			
+				</ul>
+			</div>
+   	</div> 
+
+   </header> <!-- /header -->   
+
+   <!-- trailfinder
+   ================================================== -->
+   <section id="trailfinder" class="blk-trailfinder">
+		<div id="map" class="blk-trailfinder__map"></div>
+		<div id='menu' class="blk-trailfinder__menu">
+			<ul>
+				<li>
+					<div class="checkbox">
+						<input id='streets-v11' type='radio' name='rtoggle' value='streets'>
+						<label for='streets-v11'>streets</label>
+					</div>
+				</li>
+				<li>
+					<div class="checkbox">
+						<input id='dark-v10' type='radio' name='rtoggle' value='dark'>
+						<label for='dark-v10'>dark</label>
+					</div>
+				</li>
+				<li>
+					<div class="checkbox">
+						<input id='outdoors-v11' type='radio' name='rtoggle' value='outdoors'>
+						<label for='outdoors-v11'>outdoors</label>
+					</div>
+				</li>
+				<li>
+					<div class="checkbox">
+						<input id='satellite-v9' type='radio' name='rtoggle' value='satellite' checked='checked'>
+						<label for='satellite-v9'>satellite</label>
+					</div>
+				</li>
+			</ul>
+		</div>
+   </section> <!-- /home -->
+   <!-- Java Script
+   ================================================== --> 
+   <script src="js/trailFinder.js" type="module"></script>
+
+</body>
+
+</html>
