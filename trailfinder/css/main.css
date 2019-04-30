@@ -86,8 +86,3 @@
 .checkbox input[type="radio"]:checked + label::after {
     content: "";
 }
-
-/*Adding focus styles on the outer-box of the fake radio*/
-/* .checkbox input[type="radio"]:focus + label::before {
-    outline: rgb(59, 153, 252) auto 5px;
-} */
