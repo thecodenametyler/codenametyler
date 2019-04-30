@@ -12,7 +12,7 @@ console.log(searchStackoverflow("[JS]" + 'test'));
 //     accessToken: 'pk.eyJ1IjoiY29kZW5hbWV0eWxlciIsImEiOiJjanYzaHYzeDUwajZiNDNvN29xczgxcWszIn0._VYJusU6Xudl9u_HMAnNDg'
 // }).addTo(mymap);
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiY29kZW5hbWV0eWxlciIsImEiOiJjanYzaHUxZzkxNzBmNGVvYnA0d2szNWI4In0.4KHn3yVDDon2yBmeFtn4dQ';
+mapboxgl.accessToken = 'pk.eyJ1IjoiY29kZW5hbWV0eWxlciIsImEiOiJjanYzaHYzeDUwajZiNDNvN29xczgxcWszIn0._VYJusU6Xudl9u_HMAnNDg';
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/satellite-v9',
