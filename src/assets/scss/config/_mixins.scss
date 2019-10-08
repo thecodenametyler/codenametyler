@@ -1,0 +1,147 @@
+@mixin box-shadow {
+  box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
+@mixin box-shadow-light {
+  box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+@mixin border-radius($radius: 3px) {
+  border-radius: $radius;
+}
+
+//transition
+@mixin transition($transition: all, $duration: .3s, $anim: ease, $delay: 0s, $preLoad: false) {
+  transition: $transition $duration $anim $delay;
+  @if $preLoad == true {
+    will-change: $transition;
+  }
+}
+//translate
+@mixin translate($x, $y) {
+  transform: translate($x, $y);
+}
+//translateX
+@mixin translateX($x) {
+  transform: translateX($x);
+}
+//translateY
+@mixin translateY($y) {
+  transform: translateY($y);
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+//rotate
+@mixin rotate($x) {
+  transform: rotate($x);
+}
+//rotateX
+@mixin rotateX($x) {
+  transform: rotateX($x);
+}
+//rotateY
+@mixin rotateY($y) {
+  transform: rotateY($y);
+}
+
+//Calculate font size base on PX then convert to REM
+@function calculateRem($size) {
+  $remSize: $size / 14px;
+  @return $remSize * 1rem;
+}
+@mixin font-size($size) {
+  font-size: calculateRem($size);
+}
+@mixin line-height($size) {
+  line-height: calculateRem($size);
+}
+
+//transition effect
+@mixin appearFrom($direction) {
+  @if $direction == 'left' {
+    transform: translateX(-100%);
+  }
+  @else if $direction == 'right' {
+    transform: translateX(100%);
+  }
+  @else if $direction == 'top' {
+    transform: translateY(-100%);
+  }
+  @else if $direction == 'bottom' {
+    transform: translateY(100%);
+  }
+  @else if $direction == 'reset' {
+    transform: translate(0,0);
+  }
+  @else {
+    transform: translate(0,0);
+  }
+  transition: all 0.5s ease;
+}
+
+
+// Define the breakpoints in vars
+// Media queries
+/*
+$breakpoint-extra-small: 576px;
+$breakpoint-small: 767px;
+$breakpoint-med-small: 991px;
+$breakpoint-med: 1024px;
+*/
+@mixin screen($size, $type: max, $pixels: $breakpoint-small) {
+  @if $size == 'extra-small' {
+    @media screen and ($type + -width: $breakpoint-extra-small) {
+      @content;
+    }
+  }
+  @else if $size == 'small' {
+    @media screen and ($type + -width: $breakpoint-small) {
+      @content;
+    }
+  }
+  @else if $size == 'med-small' {
+    @media screen and ($type + -width: $breakpoint-med-small) {
+      @content;
+    }
+  }
+  @else if $size == 'med' {
+    @media screen and ($type + -width: $breakpoint-med) {
+      @content;
+    }
+  }
+ @else if $size == 'large' {
+    @media screen and ($type + -width: $breakpoint-med) {
+      @content;
+    }
+  }
+  @else if $size == 'custom' {
+    @media screen and ($type + -width: $pixels + px) {
+     @content;
+    }
+  }
+  @else {
+    @content;
+  }
+}
+
+
+//font-icomoon
+@mixin icomoon($val) {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: $val;
+}

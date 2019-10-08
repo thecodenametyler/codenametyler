@@ -1,0 +1,59 @@
+//Path
+$image: '../img/';
+$fonts: '../fonts/';
+
+//breakpoints
+/*
+$breakpoint-small: 670px;
+$breakpoint-med-small: 768px;
+$breakpoint-med: 1175px;
+*/
+$breakpoint-extra-small: 576px;
+$breakpoint-small: 767px;
+$breakpoint-med-small: 991px;
+$breakpoint-med: 1024px;
+
+/*
+$breakpoint-xs: 767px;
+$breakpoint-sm: 991px;
+$breakpoint-ipad: 1024px;
+$breakpoint-ipadpro-max: 1366px;
+*/
+
+//Gestion Couleur
+$accent-1: #edbaaf;
+$accent-2: #222c3b;
+$accent-3: #9f98bc;
+$accent-4: #4d56a4;
+$accent-5: #2b396b;
+$accent-6: #b0a2a0;
+$accent-7: #c9c3c2;
+
+$lighter-grey: #e5e5e5;
+
+$colMain: #141414;
+
+$colBlanc: #FFFFFF;
+$colBlk: #000000;
+$colDark: #343438;
+$colBtn: #151515;
+$colGrey: #949599;
+$btn-grey: #2f2f36;
+$light-grey: #a7a7a7;
+$medium-grey: #e5e8e9;
+
+$text: #000000;
+
+$bg-grey: #f2f6f8;
+
+$colBlkA05: rgba($colBlk, 0.5);
+
+:root {
+    --accent-1: #{$accent-1};
+    --accent-2: #{$accent-2};
+    --accent-3: #{$accent-3};
+    --accent-4: #{$accent-4};
+    --accent-5: #{$accent-5};
+    --accent-6: #{$accent-6};
+    --accent-7: #{$accent-7};
+}

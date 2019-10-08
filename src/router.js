@@ -4,6 +4,7 @@ import NotFound from './views/NotFound.vue'
 import Preview from './views/Preview.vue'
 import Tutorial from './views/Tutorial.vue'
 import Page from './views/Page.vue'
+import HomePage from './views/HomePage.vue'
 
 Vue.use(Router)
 
@@ -12,7 +13,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: { name: 'tutorial' }
+      name: 'homepage',
+      component: HomePage
     },
     {
       path: '/not-found',

@@ -1,0 +1,14 @@
+//**default**//
+@import "config/_var";
+@import "config/_fonts";
+@import "config/_mixins";
+@import "config/_commons";
+
+//**plugin**//
+@import "config/_plugin";
+
+//**general**//
+@import "layout/_header";
+@import "layout/_footer";
+
+//**blocks**//
