@@ -63,7 +63,7 @@ var imageBoundaries =  {
 };
 // L.marker(imageBoundaries.ferneyOpenTrack.top).addTo(map);
 // L.marker(imageBoundaries.ferneyOpenTrack.bottom).addTo(map);
-var imageUrl = 'images/trails/ferney.jpg',
+var imageUrl = 'images/trails/ferney-cutout-min.png',
   imageBounds = [imageBoundaries.ferneyOpenTrack.top, imageBoundaries.ferneyOpenTrack.bottom];
 L.imageOverlay(imageUrl, imageBounds).addTo(map);
 L.imageOverlay(imageUrl, imageBounds).bringToFront();
