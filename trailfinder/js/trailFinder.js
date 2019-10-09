@@ -4,9 +4,26 @@ console.log(searchStackoverflow("[JS]" + 'test'));
 
 var map = L.map('map').setView([-20.295813, 57.51352910000001], 10);
 
+
+// layer switcher
+var osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}),
+    esri = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'});
+var baseMaps = {
+    "OpenStreetMap": osm,
+    "Esri World Imagery": esri
+};
+var overlays =  {//add any overlays here
+
+};
+L.control.layers(baseMaps,overlays, {position: 'topright'}).addTo(map);
+
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
+
+// L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+//     attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+// }).addTo(map);
 
 function onLocationError(e) {
 	alert(e.message);
@@ -37,35 +54,19 @@ function error(err) { // error callback
 };
 navigator.geolocation.getCurrentPosition(success, error, options);*/
 
-//Fit image in boundary
+// Fit image in boundary
 var imageBoundaries =  {
-  img_1: {
-    top: [-20.295813, 57.51352910000001],
-    bottom: [-20.495813, 58.51352910000001]
+  ferneyOpenTrack: {
+    top: [-20.329695, 57.695883],
+    bottom: [-20.364450, 57.722130]
   }
 };
-L.marker(imageBoundaries.img_1.top).addTo(map);
-L.marker(imageBoundaries.img_1.bottom).addTo(map);
-var imageUrl = '../images/logo.png',
-  imageBounds = [imageBoundaries.img_1.top, imageBoundaries.img_1.bottom];
-
+// L.marker(imageBoundaries.ferneyOpenTrack.top).addTo(map);
+// L.marker(imageBoundaries.ferneyOpenTrack.bottom).addTo(map);
+var imageUrl = 'images/trails/ferney.jpg',
+  imageBounds = [imageBoundaries.ferneyOpenTrack.top, imageBoundaries.ferneyOpenTrack.bottom];
 L.imageOverlay(imageUrl, imageBounds).addTo(map);
 L.imageOverlay(imageUrl, imageBounds).bringToFront();
-
-
-var osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}),
-    esri = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'});
-
-var baseMaps = {
-    "OpenStreetMap": osm,
-    "Esri World Imagery": esri
-};
-
-var overlays =  {//add any overlays here
-
-};
-
-L.control.layers(baseMaps,overlays, {position: 'topright'}).addTo(map);
 
 // //initialize locate plugin
 var lc = L.control.locate().addTo(map);
