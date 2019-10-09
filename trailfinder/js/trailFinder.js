@@ -73,17 +73,17 @@ L.imageOverlay(imageUrl, imageBounds).addTo(map);
 L.imageOverlay(imageUrl, imageBounds).bringToFront();
 
 
-var osm = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"),
-    mqi = L.tileLayer("http://{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.png", {subdomains: ['otile1','otile2','otile3','otile4']});
+var osm = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}),
+    esri = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'});
 
 var baseMaps = {
     "OpenStreetMap": osm,
-    "MapQuestImagery": mqi
+    "Esri World Imagery": esri
 };
 
 var overlays =  {//add any overlays here
 
-    };
+};
 
 L.control.layers(baseMaps,overlays, {position: 'topright'}).addTo(map);
 
