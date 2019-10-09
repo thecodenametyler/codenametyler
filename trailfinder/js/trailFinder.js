@@ -32,7 +32,7 @@ function onLocationError(e) {
 	alert(e.message);
 }
 map.on('locationerror', onLocationError);
-
+/*
 var options = {
   enableHighAccuracy: true,
   timeout: 5000,
@@ -55,7 +55,7 @@ function doSomethingWithCoordinateValues(coords) {
 function error(err) { // error callback
   console.warn('ERROR(' + err.code + '): ' + err.message);
 };
-navigator.geolocation.getCurrentPosition(success, error, options);
+navigator.geolocation.getCurrentPosition(success, error, options);*/
 
 //Fit image in boundary
 var imageBoundaries =  {
@@ -71,3 +71,26 @@ var imageUrl = 'https://www.preeska.com/assets/img/landing/illu_recycle.svg',
 
 L.imageOverlay(imageUrl, imageBounds).addTo(map);
 L.imageOverlay(imageUrl, imageBounds).bringToFront();
+
+
+var osm = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"),
+    mqi = L.tileLayer("http://{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.png", {subdomains: ['otile1','otile2','otile3','otile4']});
+
+var baseMaps = {
+    "OpenStreetMap": osm,
+    "MapQuestImagery": mqi
+};
+
+var overlays =  {//add any overlays here
+
+    };
+
+L.control.layers(baseMaps,overlays, {position: 'topright'}).addTo(map);
+
+// //initialize locate plugin
+// L.control.locate().addTo(map);
+
+// create control and add to map
+var lc = L.control.locate().addTo(map);
+// request location update and set location
+//lc.start();
