@@ -10,6 +10,13 @@ var stackoverflow =  {
 };
 
 var OSM = {
+  config: {
+    sateliteDefault: false,
+    debug: {
+      imagery : false,
+      kml : false
+    }
+  },
   el: {
     center: [-20.295813, 57.51352910000001],
     imageBoundaries: {
@@ -17,6 +24,16 @@ var OSM = {
         top: [-20.329695, 57.695883],
         bottom: [-20.364450, 57.722130],
         img: 'images/trails/ferney-cutout-min.png'
+      }
+    },
+    mapType: {
+      osm : {
+        url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        attr: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      },
+      esi : {
+        url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+        attr: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
       }
     }
   },
@@ -33,13 +50,15 @@ var OSM = {
      * @param {string} mapId - div id
      */
     var map = L.map(mapId).setView(OSM.el.center, 10);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-    // DEBUG SATELITE MODE
-    // L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    //     attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-    // }).addTo(map);
+    if(OSM.config.sateliteDefault) {
+      L.tileLayer(OSM.el.mapType.esi.url, {
+          attribution: OSM.el.mapType.esi.attr
+      }).addTo(map);
+    } else {
+      L.tileLayer(OSM.el.mapType.osm.url, {
+        attribution: OSM.el.mapType.osm.attr
+      }).addTo(map);
+    }
 
     /**
      * Display error message if theres any in console + make stackoverflow link
@@ -92,9 +111,11 @@ var OSM = {
         e.addLayer(track);
 
         L.marker(track.getBounds()._northEast).addTo(e);
-        // Adjust map to show the kml
-        //const bounds = track.getBounds();
-        //map.fitBounds(bounds);
+        if(OSM.config.debug.kml) {
+          // Adjust map to show the kml
+          const bounds = track.getBounds();
+          e.fitBounds(bounds);
+        }
       });
   },
 
@@ -121,8 +142,10 @@ var OSM = {
       if (!OSM.el.imageBoundaries.hasOwnProperty(key)) continue;
       var obj = OSM.el.imageBoundaries[key];
 
-      // L.marker(obj.top).addTo(e);
-      // L.marker(obj.bottom).addTo(e);
+      if(OSM.config.debug.imagery) {
+        L.marker(obj.top).addTo(e);
+        L.marker(obj.bottom).addTo(e);
+      }
       var imageBounds = [obj.top, obj.bottom];
       L.imageOverlay(obj.img, imageBounds).addTo(e);
       L.imageOverlay(obj.img, imageBounds).bringToFront();
@@ -135,11 +158,11 @@ var OSM = {
      *
      * @param {object} e - the actual map
      */
-    var osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}),
-    esri = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'});
+    var osm = L.tileLayer(OSM.el.mapType.osm.url, {attribution: OSM.el.mapType.osm.attr}),
+    esri = L.tileLayer(OSM.el.mapType.esi.url, {attribution: OSM.el.mapType.esi.attr});
     var baseMaps = {
-      "OpenStreetMap": osm,
-      "Esri World Imagery": esri
+      "<strong>OpenStreetMap</strong>": osm,
+      "<strong>Esri World Imagery</strong>": esri
     };
     var overlays =  {//add any overlays here
 
@@ -154,6 +177,10 @@ var OSM = {
      * @param {object} e - the actual map
      */
     var lc = L.control.locate().addTo(e);
+
+    /**
+     * activate location tracker form the start
+     */
     //lc.start();
   }
 
