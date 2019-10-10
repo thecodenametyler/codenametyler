@@ -86,37 +86,61 @@ var OSM = {
     OSM.plugin(map);
 
     /**
-     * Import KMLs
+     * Import GPXs
      *
-     * plugin used https://github.com/windycom/leaflet-kml
+     * plugin used https://github.com/mapbox/leaflet-omnivore
      */
-    OSM.importKml(map);
+    OSM.importGpx(map);
   },
 
-  importKml: function(e) {
+  importGpx: function(e) {
     /**
-     * plugin used https://github.com/windycom/leaflet-kml
+     * plugin used https://github.com/mapbox/leaflet-omnivore
      *
      * @param {object} e - the actual map
      */
-    // Load kml file
-    fetch('import/kml/sample_path.kml')
-      .then(res => res.text())
-      .then(kmltext => {
-        // Create new kml overlay
-        const parser = new DOMParser();
-        const kml = parser.parseFromString(kmltext, 'text/xml');
-        const track = new L.KML(kml);
+    // Load gpx file
 
-        e.addLayer(track);
-
-        L.marker(track.getBounds()._northEast).addTo(e);
-        if(OSM.config.debug.kml) {
-          // Adjust map to show the kml
-          const bounds = track.getBounds();
-          e.fitBounds(bounds);
+    var folder = 'import/gpx/';
+    var gpxFiles = [
+      {
+        url : 'TrailRun20190727080015.gpx'
+      },
+      {
+        url : 'TrailRun20190811084459.gpx'
+      },
+      {
+        url : 'TrailRun20190824073035.gpx'
+      },
+      {
+        url : 'TrailRun20190907053315.gpx'
+      },
+      {
+        url : 'TrailRun20190921080035.gpx'
+      },
+      {
+        url : 'TrailRun20191005073737.gpx'
+      }
+    ];
+    gpxFiles.forEach(function (item, index) {
+      console.log(item.url);
+        
+      var customLayer = L.geoJson(null, {
+        // http://leafletjs.com/reference.html#geojson-style
+        style: function(feature) {
+          return { color: '#000' };
         }
       });
+      var runLayer = omnivore.gpx(folder+item.url, null, customLayer)
+      .on('ready', function() {
+        // e.fitBounds(runLayer.getBounds());
+      })
+      .on('error', function() {
+          // fired if the layer can't be loaded over AJAX
+          // or can't be parsed
+      })
+      .addTo(e);
+    });
   },
 
   imageOverlay: function(e) {
