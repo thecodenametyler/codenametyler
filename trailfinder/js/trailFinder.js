@@ -81,7 +81,7 @@ var OSM = {
      * @param {object} e - the actual map
      */
     // Load kml file
-    fetch('import/kml/polygon.kml')
+    fetch('import/kml/sample_path.kml')
       .then(res => res.text())
       .then(kmltext => {
         // Create new kml overlay
