@@ -65,6 +65,37 @@ var OSM = {
      * Initialize third party plugins
      */
     OSM.plugin(map);
+
+    /**
+     * Import KMLs
+     *
+     * plugin used https://github.com/windycom/leaflet-kml
+     */
+    OSM.importKml(map);
+  },
+
+  importKml: function(e) {
+    /**
+     * plugin used https://github.com/windycom/leaflet-kml
+     *
+     * @param {object} e - the actual map
+     */
+    // Load kml file
+    fetch('import/kml/polygon.kml')
+      .then(res => res.text())
+      .then(kmltext => {
+        // Create new kml overlay
+        const parser = new DOMParser();
+        const kml = parser.parseFromString(kmltext, 'text/xml');
+        const track = new L.KML(kml);
+
+        e.addLayer(track);
+
+        L.marker(track.getBounds()._northEast).addTo(e);
+        // Adjust map to show the kml
+        //const bounds = track.getBounds();
+        //map.fitBounds(bounds);
+      });
   },
 
   imageOverlay: function(e) {
