@@ -151,7 +151,7 @@ var OSM = {
 
       var div = L.DomUtil.create('div', 'info legend');
       div.innerHTML = `
-        <select id="switchTrail">
+        <select class="select-css" id="switchTrail">
         `+options+`
         </select>
       `;
