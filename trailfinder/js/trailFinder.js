@@ -30,27 +30,33 @@ var OSM = {
       files: [
         {
           url : 'TrailRun20190727080015.gpx',
-          name : 'UTRB 2019 - 25 km'
+          name : 'UTRB 2019 - 25 km',
+          boundaries : [[-20.509252, 57.544858], [-20.449367, 57.704510]]
         },
         {
           url : 'TrailRun20190811084459.gpx',
-          name : 'Heritage - 21 km'
+          name : 'Heritage - 21 km',
+          boundaries : [[-20.501111, 57.440865], [-20.505369, 57.412095]]
         },
         {
           url : 'TrailRun20190824073035.gpx',
-          name : 'Black River Trail Run'
+          name : 'Black River Trail Run',
+          boundaries : [[-20.446312, 57.342148], [-20.455186, 57.345660]]
         },
         {
           url : 'TrailRun20190907053315.gpx',
-          name : 'Ferney Trail Run'
+          name : 'Ferney Trail Run',
+          boundaries : [[-20.361671, 57.705657], [-20.362011, 57.705933]]
         },
         {
           url : 'TrailRun20190921080035.gpx',
-          name : 'Parakeet x 2'
+          name : 'Parakeet x 2',
+          boundaries : [[-20.383311, 57.421017], [-20.383517, 57.421285]]
         },
         {
           url : 'TrailRun20191005073737.gpx',
-          name : 'Moka Trail Run'
+          name : 'Moka Trail Run',
+          boundaries : [[-20.208511, 57.561048], [-20.209446, 57.557135]]
         }
       ],
       path : 'import/gpx/'
@@ -158,20 +164,21 @@ var OSM = {
     addEventHandler(document, 'DOMContentLoaded', function() {
       addEventHandler(document.getElementById('switchTrail'), 'change', function() {
         if(this.value !== "") {
-          /**
-           * Load specific gpx
-           *
-           * plugin used https://github.com/mapbox/leaflet-omnivore
-           */
-          OSM.importGpx(e, this.value);
+           //https://leafletjs.com/reference-1.5.0.html#fitbounds-options
+           // focus map on specific trail
+           e.fitBounds(OSM.el.gpx.files[this.value].boundaries);
         }
       });
     });
   },
 
   importGpxAll: function(e) {
+    /**
+     * plugin used https://github.com/mapbox/leaflet-omnivore
+     *
+     * @param {object} e - the actual map
+     */
     OSM.el.gpx.files.forEach(function (item, index) {
-      console.log(item.url);
 
       var customLayer = L.geoJson(null, {
         // http://leafletjs.com/reference.html#geojson-style
