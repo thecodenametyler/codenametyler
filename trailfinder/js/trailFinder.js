@@ -26,6 +26,35 @@ var OSM = {
         img: 'images/trails/ferney-cutout-min.png'
       }
     },
+    gpx: {
+      files: [
+        {
+          url : 'TrailRun20190727080015.gpx',
+          name : 'UTRB 2019 - 25 km'
+        },
+        {
+          url : 'TrailRun20190811084459.gpx',
+          name : 'Heritage - 21 km'
+        },
+        {
+          url : 'TrailRun20190824073035.gpx',
+          name : 'Black River Trail Run'
+        },
+        {
+          url : 'TrailRun20190907053315.gpx',
+          name : 'Ferney Trail Run'
+        },
+        {
+          url : 'TrailRun20190921080035.gpx',
+          name : 'Parakeet x 2'
+        },
+        {
+          url : 'TrailRun20191005073737.gpx',
+          name : 'Moka Trail Run'
+        }
+      ],
+      path : 'import/gpx/'
+    },
     mapType: {
       osm : {
         url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -70,6 +99,12 @@ var OSM = {
     map.on('locationerror', onLocationError);
 
     /**
+     * Add trail selector
+     * load different gpx files
+     */
+    OSM.switchTrail(map);
+
+    /**
      * Add ability to switch view from :
      * OSM / Esri
      */
@@ -86,52 +121,65 @@ var OSM = {
     OSM.plugin(map);
 
     /**
-     * Import GPXs
+     * Import ALL GPXs
      *
      * plugin used https://github.com/mapbox/leaflet-omnivore
      */
-    OSM.importGpx(map);
+    OSM.importGpxAll(map);
   },
 
-  importGpx: function(e) {
+  switchTrail: function(e) {
     /**
-     * plugin used https://github.com/mapbox/leaflet-omnivore
+     * Ability to switch tracks
      *
      * @param {object} e - the actual map
      */
-    // Load gpx file
 
-    var folder = 'import/gpx/';
-    var gpxFiles = [
-      {
-        url : 'TrailRun20190727080015.gpx'
-      },
-      {
-        url : 'TrailRun20190811084459.gpx'
-      },
-      {
-        url : 'TrailRun20190824073035.gpx'
-      },
-      {
-        url : 'TrailRun20190907053315.gpx'
-      },
-      {
-        url : 'TrailRun20190921080035.gpx'
-      },
-      {
-        url : 'TrailRun20191005073737.gpx'
-      }
-    ];
-    gpxFiles.forEach(function (item, index) {
+    var legend = L.control({position: 'topright'});
+
+    legend.onAdd = function (e) {
+      var options = '<option value="">Choose a trail</option>';
+      OSM.el.gpx.files.forEach(function (item, index) {
+        options += '<option value="'+index+'">'+item.name+'</option>';
+      });
+
+      var div = L.DomUtil.create('div', 'info legend');
+      div.innerHTML = `
+        <select id="switchTrail">
+        `+options+`
+        </select>
+      `;
+      div.firstChild.onmousedown = div.firstChild.ondblclick = L.DomEvent.stopPropagation;
+      return div;
+    };
+
+    legend.addTo(e);
+
+    addEventHandler(document, 'DOMContentLoaded', function() {
+      addEventHandler(document.getElementById('switchTrail'), 'change', function() {
+        if(this.value !== "") {
+          /**
+           * Load specific gpx
+           *
+           * plugin used https://github.com/mapbox/leaflet-omnivore
+           */
+          OSM.importGpx(e, this.value);
+        }
+      });
+    });
+  },
+
+  importGpxAll: function(e) {
+    OSM.el.gpx.files.forEach(function (item, index) {
       console.log(item.url);
-        
+
       var customLayer = L.geoJson(null, {
         // http://leafletjs.com/reference.html#geojson-style
         style: function(feature) {
           return { color: '#000' };
         }
       });
-      var runLayer = omnivore.gpx(folder+item.url, null, customLayer)
+      var runLayer = omnivore.gpx(OSM.el.gpx.path+item.url, null, customLayer)
       .on('ready', function() {
         // e.fitBounds(runLayer.getBounds());
       })
@@ -141,6 +189,31 @@ var OSM = {
       })
       .addTo(e);
     });
+  },
+
+  importGpx: function(e, index) {
+    /**
+     * plugin used https://github.com/mapbox/leaflet-omnivore
+     *
+     * @param {object} e - the actual map
+     * @param {int} index - the index of array to be loaded
+     */
+    // Load gpx file
+    var customLayer = L.geoJson(null, {
+      // http://leafletjs.com/reference.html#geojson-style
+      style: function(feature) {
+        return { color: '#000' };
+      }
+    });
+    var runLayer = omnivore.gpx(OSM.el.gpx.path+OSM.el.gpx.files[index].url, null, customLayer)
+    .on('ready', function() {
+      e.fitBounds(runLayer.getBounds());
+    })
+    .on('error', function() {
+        // fired if the layer can't be loaded over AJAX
+        // or can't be parsed
+    });
+    //.addTo(e);
   },
 
   imageOverlay: function(e) {
@@ -209,5 +282,12 @@ var OSM = {
   }
 
 };
+
+function addEventHandler(elem, eventType, handler) {
+  if (elem.addEventListener)
+    elem.addEventListener (eventType, handler, false);
+  else if (elem.attachEvent)
+    elem.attachEvent ('on' + eventType, handler);
+}
 
 OSM.init();
