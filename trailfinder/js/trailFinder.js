@@ -178,8 +178,8 @@ var OSM = {
      *
      * @param {object} e - the actual map
      */
+    var progress = 1;
     OSM.el.gpx.files.forEach(function (item, index) {
-
       var customLayer = L.geoJson(null, {
         // http://leafletjs.com/reference.html#geojson-style
         style: function(feature) {
@@ -188,14 +188,29 @@ var OSM = {
       });
       var runLayer = omnivore.gpx(OSM.el.gpx.path+item.url, null, customLayer)
       .on('ready', function() {
+        progress++;
         // e.fitBounds(runLayer.getBounds());
+        var loaderText = document.getElementById('osm-map__loader__text__name');
+        loaderText.innerHTML = item.name;
+
+        var loaderStatus = document.getElementById('osm-map__loader__text_status');
+        loaderStatus.innerHTML = progress + " of " + OSM.el.gpx.files.length;
+
+        if(progress == OSM.el.gpx.files.length) {
+          setTimeout(function(){
+            var loader = document.getElementById('osm-map__loader');
+            loader.classList.add('hide');
+          }, 500);
+        }
       })
       .on('error', function() {
           // fired if the layer can't be loaded over AJAX
           // or can't be parsed
+          alert(item.name + ": could be initialized.");
       })
       .addTo(e);
     });
+    progress = 0;
   },
 
   importGpx: function(e, index) {
@@ -219,6 +234,7 @@ var OSM = {
     .on('error', function() {
         // fired if the layer can't be loaded over AJAX
         // or can't be parsed
+          alert(OSM.el.gpx.files[index].name + ": could be initialized.");
     });
     //.addTo(e);
   },
