@@ -63,12 +63,19 @@ var OSM = {
     },
     mapType: {
       osm : {
+        label: '<strong>OpenStreetMap</strong>',
         url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         attr: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       },
       esi : {
+        label: '<strong>Esri World Imagery</strong>',
         url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
         attr: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+      },
+      otm : {
+        label: '<strong>OpenTopoMap</strong>',
+        url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+        attr: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
       }
     }
   },
@@ -119,7 +126,7 @@ var OSM = {
     /**
      * Add image overlay
      */
-    OSM.imageOverlay(map);
+    //OSM.imageOverlay(map);
 
     /**
      * Initialize third party plugins
@@ -269,6 +276,7 @@ var OSM = {
       var imageBounds = [obj.top, obj.bottom];
       L.imageOverlay(obj.img, imageBounds).addTo(e);
       L.imageOverlay(obj.img, imageBounds).bringToFront();
+
     }
   },
 
@@ -279,15 +287,22 @@ var OSM = {
      * @param {object} e - the actual map
      */
     var osm = L.tileLayer(OSM.el.mapType.osm.url, {attribution: OSM.el.mapType.osm.attr}),
-    esri = L.tileLayer(OSM.el.mapType.esi.url, {attribution: OSM.el.mapType.esi.attr});
+    esri = L.tileLayer(OSM.el.mapType.esi.url, {attribution: OSM.el.mapType.esi.attr}),
+    otm = L.tileLayer(OSM.el.mapType.otm.url, {attribution: OSM.el.mapType.otm.attr});
     var baseMaps = {
       "<strong>OpenStreetMap</strong>": osm,
-      "<strong>Esri World Imagery</strong>": esri
+      "<strong>Esri World Imagery</strong>": esri,
+      "<strong>OpenTopoMap</strong>": otm
     };
-    var overlays =  {//add any overlays here
 
+    var ferneyOpenTrackConfig = OSM.el.imageBoundaries.ferneyOpenTrack;
+    var ferneyOpenTrackBounds = [ferneyOpenTrackConfig.top, ferneyOpenTrackConfig.bottom];
+    var ferneyOpenTrack = L.imageOverlay(ferneyOpenTrackConfig.img, ferneyOpenTrackBounds);
+    var overlayMaps = {
+      "Ferney Open Track": L.layerGroup([ferneyOpenTrack])
     };
-    L.control.layers(baseMaps,overlays, {position: 'topright'}).addTo(e);
+
+    L.control.layers(baseMaps,overlayMaps, {position: 'topright'}).addTo(e);
   },
 
   plugin: function(e) {
