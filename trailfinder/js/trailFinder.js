@@ -123,10 +123,13 @@ var OSM = {
      */
     OSM.switchView(map);
 
-    /**
-     * Add image overlay
-     */
-    //OSM.imageOverlay(map);
+    
+    if(OSM.config.debug.imagery) {
+      /**
+       * Add image overlay
+       */
+      OSM.imageOverlay(map);
+    }
 
     /**
      * Initialize third party plugins
