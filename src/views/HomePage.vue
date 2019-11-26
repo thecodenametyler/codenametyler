@@ -1,6 +1,5 @@
 <template>
   <div class="wrapper">
-
     <section class="page-section">
       <div class="page-inview">
         <div class="banner_wrapper">
@@ -14,19 +13,11 @@
       </div>
     </section>
 
-    <prismic-edit-button :documentId="documentId"/>
-    <h1 class="title">
-      {{ $prismic.richTextAsPlain(fields.title) }}
-    </h1>
+
+    <h1>{{ $prismic.richTextAsPlain(fields.title) }}</h1>
+    <h2>{{ $prismic.richTextAsPlain(fields.subtitle) }}</h2>
     <prismic-rich-text :field="fields.description" class="description"/>
-    <div class="cta-wrapper">
-      <prismic-link :field="fields.ctaLink" class="cta">
-        {{ $prismic.richTextAsPlain(fields.ctaText) }}
-      </prismic-link>
-    </div>
-    <div class="icon-wrapper">
-      <prismic-image :field="fields.icon" class="icon"/>
-    </div>
+    <prismic-edit-button :documentId="documentId"/>
   </div>
 </template>
 
@@ -38,35 +29,30 @@ export default {
       documentId: '',
       fields: {
         title: null,
-        description: null,
-        ctaLink: null,
-        ctaText: null,
-        icon: null
+        subtitle: null,
+        description: null
       }
     }
   },
   methods: {
-    // getContent (uid) {
-    //   this.$prismic.client.getByUID('page', uid)
-    //     .then((document) => {
-    //       if (document) {
-    //         this.documentId = document.id
-    //         this.fields.title = document.data.title
-    //         this.fields.description = document.data.description
-    //         this.fields.ctaLink = document.data.cta_link
-    //         this.fields.ctaText = document.data.cta_text
-    //         this.fields.icon = document.data.icon
-    //       } else {
-    //         this.$router.push({ name: 'not-found' })
-    //       }
-    //     })
-    // }
+    getContent () {
+      this.$prismic.client.getSingle('homepage').then((document) => {
+        if (document) {
+          this.documentId = document.id
+          this.fields.title = document.data.title
+          this.fields.subtitle = document.data.subtitle
+          this.fields.description = document.data.description
+        } else {
+          this.$router.push({ name: 'not-found' })
+        }
+      });
+    }
   },
   created () {
-    //this.getContent(this.$route.params.uid)
+    this.getContent()
   },
   beforeRouteUpdate (to, from, next) {
-    //this.getContent(to.params.uid)
+    this.getContent()
     next()
   }
 }
