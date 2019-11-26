@@ -5,18 +5,17 @@ html, body {
 }
 
 body {
-	font-family: $opensansregular;
+	font-family: $rokkitt;
 }
 
 strong, b {
-	font-family: $opensansbold;
 	font-weight: 300;
 }
 
 p {
 	color: $text;
 	@include font-size(14px);
-	line-height: 1.5;
+	line-height: 1.2;
 }
 
 small {
@@ -35,19 +34,18 @@ ul {
 }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+	font-family: $squadaone;
 	margin: 0;
 	font-weight: normal;
 }
 
 h1, .h1 {
-	//font-family: $thewoodlands;
 	@include font-size(55px);
 	@include screen('small') {
 		@include font-size(30px);
 	}
 }
 h2, .h2 {
-	//font-family: $thewoodlands;
 	@include font-size(48px);
 
 	@include screen('small') {
@@ -55,7 +53,6 @@ h2, .h2 {
 	}
 }
 h3, .h3 {
-	//font-family: $opensansbold;
 	@include font-size(24px);
 	@include screen('small') {
 		@include font-size(18px);
@@ -63,37 +60,25 @@ h3, .h3 {
 }
 
 .font{
-	&-fancy {
-		font-family: $thewoodlands;
+	&--fancy {
+		font-family: $squadaone;
 	}
-	&-fancy2 {
-		font-family: $minionproregular;
-	}
-	&-fancy3 {
+	&--fancy-1 {
 		font-family: $floodstd;
 	}
-	&-regular {
-		font-family: $opensansregular;
+	&--regular {
+		font-family: $rokkitt;
 	}
-	&-bold {
-		font-family: $opensansbold;
-	}
-	&-light {
-		font-family: $opensanslight;
-	}
-	&-medium {
-		font-family: $opensanssemibold;
-	}
-	&-lowercase {
+	&--lowercase {
 		text-transform: lowercase !important;
 	}
-	&-uppercase {
+	&--uppercase {
 		text-transform: uppercase !important;
 	}
-	&-capitalize {
+	&--capitalize {
 		text-transform: capitalize !important;
 	}
-	&-transform-none {
+	&--transform-none {
 		text-transform: none !important;
 	}
 }
@@ -125,9 +110,9 @@ h3, .h3 {
 			}
 		}
 		&-white{
-			color: $colBlanc;
+			color: $white;
 			p {
-				color: $colBlanc;
+				color: $white;
 			}
 		}
 		&-black{
@@ -151,7 +136,7 @@ h3, .h3 {
 			background-color: var(--accent-4);
 		}
 		&-white{
-			background-color: $colBlanc;
+			background-color: $white;
 		}
 		&-black{
 			background-color: $colBlk;
@@ -334,6 +319,25 @@ h3, .h3 {
 	}
 }
 
+.btn {
+	background: hotpink;
+	display: inline-block;
+	font-family: $squadaone;
+	text-transform: uppercase;
+	@include font-size(16px);
+	padding: 16px 20px;
+	letter-spacing: 4px;
+	color: $text;
+	&--lg {
+		padding: 24px 38px;
+		@include font-size(26px);
+	}
+	&--fill {
+		background: $white;
+		color: $text;
+	}
+}
+
 .styled-checkbox {
 	position: absolute; // take it out of document flow
 	opacity: 0; // hide it
@@ -350,7 +354,7 @@ h3, .h3 {
 		vertical-align: text-top;
 		width: 20px;
 		height: 20px;
-		background: $colBlanc;
+		background: $white;
 		border: 1px solid $light-grey;
 	}
 	// Box hover
@@ -373,7 +377,7 @@ h3, .h3 {
 	// Disabled box.
 	&:disabled + label:before {
 		box-shadow: none;
-		background: $colBlanc;
+		background: $white;
 	}
 	// Checkmark. Could be replaced with an image
 	&:checked + label:after {
@@ -381,16 +385,16 @@ h3, .h3 {
 		position: absolute;
 		left: 5px;
 		top: 11px;
-		background:  $colBlanc;
+		background:  $white;
 		width: 2px;
 		height: 2px;
 		box-shadow: 
-		2px 0 0  $colBlanc,
-		4px 0 0  $colBlanc,
-		4px -2px 0  $colBlanc,
-		4px -4px 0  $colBlanc,
-		4px -6px 0  $colBlanc,
-		4px -8px 0  $colBlanc;
+		2px 0 0  $white,
+		4px 0 0  $white,
+		4px -2px 0  $white,
+		4px -4px 0  $white,
+		4px -6px 0  $white,
+		4px -8px 0  $white;
 		transform: rotate(45deg);
 	}
 }

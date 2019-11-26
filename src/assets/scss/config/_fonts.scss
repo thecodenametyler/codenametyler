@@ -1,92 +1,46 @@
 @font-face {
-    font-family: 'thewoodlands';
-    src: url('#{$fonts}thewoodlands-regular.eot');
-    src: url('#{$fonts}thewoodlands-regular.eot?#iefix') format('embedded-opentype'),
-         url('#{$fonts}thewoodlands-regular.woff') format('woff'),
-         url('#{$fonts}thewoodlands-regular.ttf') format('truetype'),
-         url('#{$fonts}thewoodlands-regular.svg#thewoodlandsregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'GlossAndBloom';
+  src: url('#{$fonts}GlossAndBloom.eot');
+  src: url('#{$fonts}GlossAndBloom.eot?#iefix') format('embedded-opentype'),
+       url('#{$fonts}GlossAndBloom.woff') format('woff'),
+       url('#{$fonts}GlossAndBloom.ttf') format('truetype'),
+       url('#{$fonts}GlossAndBloom.svg#GlossAndBloom') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'opensansbold';
-    src: url('#{$fonts}opensans-bold.eot');
-    src: url('#{$fonts}opensans-bold.eot?#iefix') format('embedded-opentype'),
-         url('#{$fonts}opensans-bold.woff') format('woff'),
-         url('#{$fonts}opensans-bold.ttf') format('truetype'),
-         url('#{$fonts}opensans-bold.svg#opensansbold') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'rokkitt';
+  src: url('#{$fonts}rokkitt-variablefont_wght.eot');
+  src: url('#{$fonts}rokkitt-variablefont_wght.eot?#iefix') format('embedded-opentype'),
+       url('#{$fonts}rokkitt-variablefont_wght.woff') format('woff'),
+       url('#{$fonts}rokkitt-variablefont_wght.ttf') format('truetype'),
+       url('#{$fonts}rokkitt-variablefont_wght.svg#rokkitt-variablefont_wght') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'opensansregular';
-    src: url('#{$fonts}opensans-regular.eot');
-    src: url('#{$fonts}opensans-regular.eot?#iefix') format('embedded-opentype'),
-         url('#{$fonts}opensans-regular.woff') format('woff'),
-         url('#{$fonts}opensans-regular.ttf') format('truetype'),
-         url('#{$fonts}opensans-regular.svg#opensansregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-@font-face {
-    font-family: 'minionproregular';
-    src: url('#{$fonts}MinionPro-Regular.eot');
-    src: url('#{$fonts}MinionPro-Regular.eot?#iefix') format('embedded-opentype'),
-         url('#{$fonts}MinionPro-Regular.woff') format('woff'),
-         url('#{$fonts}MinionPro-Regular.ttf') format('truetype'),
-         url('#{$fonts}MinionPro-Regular.svg#minionproregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'opensanslight';
-    src: url('#{$fonts}opensans-light.eot');
-    src: url('#{$fonts}opensans-light.eot?#iefix') format('embedded-opentype'),
-         url('#{$fonts}opensans-light.woff') format('woff'),
-         url('#{$fonts}opensans-light.ttf') format('truetype'),
-         url('#{$fonts}opensans-light.svg#opensanslight') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'opensanssemibold';
-    src: url('#{$fonts}opensans-semibold.eot');
-    src: url('#{$fonts}opensans-semibold.eot?#iefix') format('embedded-opentype'),
-         url('#{$fonts}opensans-semibold.woff') format('woff'),
-         url('#{$fonts}opensans-semibold.ttf') format('truetype'),
-         url('#{$fonts}opensans-semibold.svg#opensanssemibold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-  font-family: 'floodstd';
-  src: url('#{$fonts}FloodStd.eot');
-  src: url('#{$fonts}FloodStd.eot?#iefix') format('embedded-opentype'),
-       url('#{$fonts}FloodStd.woff') format('woff'),
-       url('#{$fonts}FloodStd.ttf') format('truetype'),
-       url('#{$fonts}FloodStd.svg#FloodStd') format('svg');
+  font-family: 'squadaone';
+  src: url('#{$fonts}SquadaOne-Regular.eot');
+  src: url('#{$fonts}SquadaOne-Regular.eot?#iefix') format('embedded-opentype'),
+       url('#{$fonts}SquadaOne-Regular.woff') format('woff'),
+       url('#{$fonts}SquadaOne-Regular.ttf') format('truetype'),
+       url('#{$fonts}SquadaOne-Regular.svg#SquadaOne-Regular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 //Variables Polices
-$thewoodlands : 'thewoodlands', Arial, Helvetica, sans-serif;
-$opensansbold : 'opensansbold', Arial, Helvetica, sans-serif;
-$opensansregular : 'opensansregular', Arial, Helvetica, sans-serif;
-$minionproregular : 'minionproregular', Arial, Helvetica, sans-serif;
-$opensanslight : 'opensanslight', Arial, Helvetica, sans-serif;
-$opensanssemibold : 'opensanssemibold', Arial, Helvetica, sans-serif;
-$floodstd : 'floodstd', Arial, Helvetica, sans-serif;
+$rokkitt : 'rokkitt', Arial, Helvetica, sans-serif;
+$squadaone : 'squadaone', Arial, Helvetica, sans-serif;
+$floodstd : 'GlossAndBloom', Arial, Helvetica, sans-serif;
 
 @font-face {
   font-family: 'icomoon';
-  src:  url('#{$fonts}icomoon.eot?hcay17');
-  src:  url('#{$fonts}icomoon.eot?hcay17#iefix') format('embedded-opentype'),
-  url('#{$fonts}icomoon.ttf?hcay17') format('truetype'),
-  url('#{$fonts}icomoon.woff?hcay17') format('woff'),
-  url('#{$fonts}icomoon.svg?hcay17#icomoon') format('svg');
+  src:  url('#{$fonts}icomoon.eot?8r0ll9');
+  src:  url('#{$fonts}icomoon.eot?8r0ll9#iefix') format('embedded-opentype'),
+  url('#{$fonts}icomoon.ttf?8r0ll9') format('truetype'),
+  url('#{$fonts}icomoon.woff?8r0ll9') format('woff'),
+  url('#{$fonts}icomoon.svg?8r0ll9#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -121,19 +75,19 @@ $floodstd : 'floodstd', Arial, Helvetica, sans-serif;
 .icon-droplet:before {
   content: "\e902";
 }
-.icon-fb:before {
+.icon-facebook:before {
   content: "\e903";
 }
 .icon-flower:before {
   content: "\e904";
 }
-.icon-gp:before {
+.icon-googleplus:before {
   content: "\e905";
 }
 .icon-ingredient:before {
   content: "\e906";
 }
-.icon-insta:before {
+.icon-instagram:before {
   content: "\e907";
 }
 .icon-leaves:before {
@@ -175,12 +129,12 @@ $floodstd : 'floodstd', Arial, Helvetica, sans-serif;
 .icon-stones:before {
   content: "\e914";
 }
-.icon-tw:before {
+.icon-twitter:before {
   content: "\e915";
 }
 .icon-wave:before {
   content: "\e916";
 }
-.icon-yt:before {
+.icon-youtube:before {
   content: "\e917";
 }
