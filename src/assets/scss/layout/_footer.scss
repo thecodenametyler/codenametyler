@@ -1,10 +1,29 @@
 .footer{
+    position: relative;
+    z-index: 2;
     &__wrapper {
-        background: red;
+        background-image: url(../img/bg-1.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: bottom center;
         padding: 70px 0;
         color: $white;
+        position: relative;
         p {
             color: $white;
+        }
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: $colBlk;
+            background: linear-gradient(0deg, rgba($colBlk,0.5) 0%, rgba($colBlk,0) 100%);
+            z-index: 1;
         }
     }
     &__desc {
@@ -29,6 +48,7 @@
         }
     }
     &__followus {
+        margin-bottom: 70px;
         &__title {
             letter-spacing: 4px;
             text-transform: uppercase;
@@ -50,6 +70,30 @@
                     display: block; 
                     @include font-size(22px);
                     @include line-height(22px);
+                }
+            }
+        }
+    }
+    &__links {
+        .logo {
+            max-width: 100px;
+        }
+        &__list {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            text-transform: uppercase;
+            font-family: $squadaone;
+            letter-spacing: 4px;
+            a, p {
+                @include font-size(14px);
+                @include line-height(18px);
+            }
+            > li {
+                &:not(:last-child) {
+                    margin-right: 20px;
                 }
             }
         }
