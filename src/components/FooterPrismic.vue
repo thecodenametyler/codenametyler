@@ -27,10 +27,15 @@
       <div class="row center-xs footer__links">
         <div class="col-xs-12 col-md-12">
           <ul class="footer__links__list">
-            <li><p>&copy; copyright 2019 codenametyler</p></li>
-            <li><a href="#" title="Home"><img class="img-responsive logo" title="codenametyler" src="../assets/img/logo.png"></a></li>
             <li><a href="#" title="Trail Finder">trailfinder</a></li>
             <li><a href="#" title="Honorable mentions">honorable mentions</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row center-xs footer__links">
+        <div class="col-xs-12 col-md-12">
+          <ul class="footer__links__list">
+            <li><p>&copy; copyright 2019 codenametyler</p></li>
           </ul>
         </div>
       </div>

@@ -8,9 +8,6 @@ body {
 	font-family: $rokkitt;
 }
 
-strong, b {
-	font-weight: 300;
-}
 
 p {
 	color: $text;
@@ -404,4 +401,36 @@ h3, .h3 {
 }
 .with-bgcolor {
 	background-color: var(--bg-color);
+}
+
+.section{
+	&__wrapper {
+		position: relative;
+	}
+	&__next {
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		width: 100%;
+		bottom: 0;
+		left: 0;
+		&__btn {
+			cursor: pointer;
+			color: $white;
+			display: block;
+			height: 40px;
+			width: 40px;
+			position: relative;
+			[class^="icon-"], [class*=" icon-"] {
+				display: block;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				@include font-size(24px);
+			}
+		}
+	}
 }

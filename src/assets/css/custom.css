@@ -151,9 +151,6 @@ html, body {
 body {
   font-family: "rokkitt", Arial, Helvetica, sans-serif; }
 
-strong, b {
-  font-weight: 300; }
-
 p {
   color: #133235;
   font-size: 1rem;
@@ -1661,6 +1658,33 @@ h3, .h3 {
 .with-bgcolor {
   background-color: var(--bg-color); }
 
+.section__wrapper {
+  position: relative; }
+
+.section__next {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0; }
+  .section__next__btn {
+    cursor: pointer;
+    color: #FFFFFF;
+    display: block;
+    height: 40px;
+    width: 40px;
+    position: relative; }
+    .section__next__btn [class^="icon-"], .section__next__btn [class*=" icon-"] {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.71429rem; }
+
 .footer {
   position: relative;
   z-index: 2; }
@@ -1740,3 +1764,41 @@ h3, .h3 {
       line-height: 1.28571rem; }
     .footer__links__list > li:not(:last-child) {
       margin-right: 20px; }
+
+.banner {
+  padding: 0;
+  margin: 0; }
+  .banner__item {
+    padding: 100px 0;
+    padding: 100px 2rem;
+    margin: 0;
+    background: #a7a7a7; }
+  .banner__content {
+    text-align: center; }
+    .banner__content p {
+      font-size: 1.92857rem; }
+
+.contrib__wrapper {
+  background: red; }
+
+.contrib__list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap; }
+
+.contrib__item {
+  width: 50%;
+  background: red; }
+  .contrib__item__wrapper {
+    background: red; }
+  .contrib__item__cover {
+    background: red; }
+  .contrib__item__name {
+    background: red; }
+    .contrib__item__name__wrapper {
+      background: red; }
+    .contrib__item__name--fancy {
+      background: red; }
+  .contrib__item__desc {
+    background: red; }

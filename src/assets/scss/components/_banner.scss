@@ -1,0 +1,56 @@
+.banner {
+    padding: 0;
+    margin: 0;
+    &__wrapper {
+        // min-height: 100vh;
+    }
+    &__item {
+        padding: 100px 0;
+        padding: 100px 2rem;
+        margin: 0;
+        background: $light-grey;
+    }
+    &__content {
+        text-align: center;
+        p {
+		    @include font-size(27px);
+        }
+    }
+}
+
+.contrib {
+    &__wrapper{
+        background: red;
+    }
+    &__list{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    &__item{
+        width: 50%;
+        background: red;
+        &__wrapper {
+            background: red;
+        }
+        &__cover {
+            background: red;
+        }
+        &__name {
+            background: red;
+            &__wrapper {
+                background: red;
+            }
+            &--fancy {
+                background: red;
+            }
+        }
+        &__desc {
+            background: red;
+            p {
+
+            }
+        }
+    }
+}
