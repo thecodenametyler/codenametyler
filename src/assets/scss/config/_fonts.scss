@@ -1,14 +1,4 @@
 @font-face {
-  font-family: 'GlossAndBloom';
-  src: url('#{$fonts}GlossAndBloom.eot');
-  src: url('#{$fonts}GlossAndBloom.eot?#iefix') format('embedded-opentype'),
-       url('#{$fonts}GlossAndBloom.woff') format('woff'),
-       url('#{$fonts}GlossAndBloom.ttf') format('truetype'),
-       url('#{$fonts}GlossAndBloom.svg#GlossAndBloom') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
   font-family: 'rokkitt';
   src: url('#{$fonts}rokkitt-variablefont_wght.eot');
   src: url('#{$fonts}rokkitt-variablefont_wght.eot?#iefix') format('embedded-opentype'),
@@ -19,20 +9,19 @@
   font-style: normal;
 }
 @font-face {
-  font-family: 'squadaone';
-  src: url('#{$fonts}SquadaOne-Regular.eot');
-  src: url('#{$fonts}SquadaOne-Regular.eot?#iefix') format('embedded-opentype'),
-       url('#{$fonts}SquadaOne-Regular.woff') format('woff'),
-       url('#{$fonts}SquadaOne-Regular.ttf') format('truetype'),
-       url('#{$fonts}SquadaOne-Regular.svg#SquadaOne-Regular') format('svg');
+  font-family: 'bebasneue';
+  src: url('#{$fonts}bebasneue-regular.eot');
+  src: url('#{$fonts}bebasneue-regular.eot?#iefix') format('embedded-opentype'),
+       url('#{$fonts}bebasneue-regular.woff') format('woff'),
+       url('#{$fonts}bebasneue-regular.ttf') format('truetype'),
+       url('#{$fonts}bebasneue-regular.svg#bebasneue-regular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 //Variables Polices
 $rokkitt : 'rokkitt', Arial, Helvetica, sans-serif;
-$squadaone : 'squadaone', Arial, Helvetica, sans-serif;
-$floodstd : 'GlossAndBloom', Arial, Helvetica, sans-serif;
+$bebasneue : 'bebasneue', Arial, Helvetica, sans-serif;
 
 @font-face {
   font-family: 'icomoon';

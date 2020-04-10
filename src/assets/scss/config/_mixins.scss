@@ -51,7 +51,7 @@
 
 //Calculate font size base on PX then convert to REM
 @function calculateRem($size) {
-  $remSize: $size / 14px;
+  $remSize: $size / 16px;
   @return $remSize * 1rem;
 }
 @mixin font-size($size) {

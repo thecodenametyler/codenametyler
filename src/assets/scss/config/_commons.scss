@@ -1,6 +1,6 @@
 html, body {
 	color: $colMain;
-	font-size: 14px;
+	font-size: 16px;
 	scroll-behavior: smooth;
 }
 
@@ -11,7 +11,7 @@ body {
 
 p {
 	color: $text;
-	@include font-size(14px);
+	@include font-size(16px);
 	line-height: 1.2;
 }
 
@@ -31,37 +31,40 @@ ul {
 }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-	font-family: $squadaone;
+	font-family: $bebasneue;
 	margin: 0;
 	font-weight: normal;
 }
 
 h1, .h1 {
 	@include font-size(55px);
+	@include line-height(59px);
 	@include screen('small') {
 		@include font-size(30px);
+		@include line-height(34px);
 	}
 }
 h2, .h2 {
 	@include font-size(48px);
+	@include line-height(52px);
 
 	@include screen('small') {
 		@include font-size(27px);
+		@include line-height(31px);
 	}
 }
 h3, .h3 {
 	@include font-size(24px);
+	@include line-height(20px);
 	@include screen('small') {
 		@include font-size(18px);
+		@include line-height(22px);
 	}
 }
 
 .font{
 	&--fancy {
-		font-family: $squadaone;
-	}
-	&--fancy-1 {
-		font-family: $floodstd;
+		font-family: $bebasneue;
 	}
 	&--regular {
 		font-family: $rokkitt;
@@ -319,11 +322,11 @@ h3, .h3 {
 .btn {
 	background: hotpink;
 	display: inline-block;
-	font-family: $squadaone;
+	font-family: $bebasneue;
 	text-transform: uppercase;
 	@include font-size(16px);
 	padding: 16px 20px;
-	letter-spacing: 4px;
+	letter-spacing: 2px;
 	color: $text;
 	&--lg {
 		padding: 24px 38px;
@@ -409,10 +412,8 @@ h3, .h3 {
 	}
 	&__next {
 		text-align: center;
-		display: flex;
-		justify-content: center;
-		align-items: center;
 		position: absolute;
+		height: 100px;
 		width: 100%;
 		bottom: 0;
 		left: 0;
@@ -422,7 +423,10 @@ h3, .h3 {
 			display: block;
 			height: 40px;
 			width: 40px;
-			position: relative;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
 			[class^="icon-"], [class*=" icon-"] {
 				display: block;
 				position: absolute;

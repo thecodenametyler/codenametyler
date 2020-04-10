@@ -1,6 +1,24 @@
 <template>
 
   <div>
+    <section class="section__wrapper banner__wrapper banner__wrapper--full">
+      <div class="container banner">
+        <div class="row banner__item">
+          <div class="col-xs-12 col-md-12">
+            <div class="banner__content">
+              <h1><em>CodeNameTyler</em></h1>
+              <p>Buckle up, and get ready to send it!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section__next">
+        <div class="section__next__btn">
+          <i class="icon-arrow-down"></i>
+        </div>
+      </div>
+    </section>
+<!-- 
     <section class="section__wrapper banner__wrapper">
       <div class="container-fluid banner">
         <div class="row banner__item">
@@ -12,22 +30,13 @@
           </div>
         </div>
       </div>
-      
-      <!-- <div class="banner banner--parallax-multilayer">
-        <div class="banner-parallax_layer">BG</div>
-        <div class="banner-parallax_layer">BG CLOUD</div>
-        <div class="banner-parallax_layer">Text</div>
-        <div class="banner-parallax_layer">MG</div>
-        <div class="banner-parallax_layer">FG CLOUD</div>
-        <div class="banner-parallax_layer">FG</div>
-      </div> -->
       <div class="section__next">
         <div class="section__next__btn">
           <i class="icon-arrow-down"></i>
         </div>
       </div>
     </section>
-    
+
     <section class="section__wrapper contrib__wrapper">
       <div class="container contrib">
         <div class="row">
@@ -66,7 +75,8 @@
         </div>
       </div>
     </section>
-    <div class="wrapper">
+     -->
+    <div class="wrapper container">
       <h1>{{ $prismic.richTextAsPlain(fields.title) }}</h1>
       <h2>{{ $prismic.richTextAsPlain(fields.subtitle) }}</h2>
       <prismic-rich-text :field="fields.description" class="description"/>

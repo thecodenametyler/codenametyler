@@ -1,8 +1,60 @@
 .banner {
     padding: 0;
     margin: 0;
+    position: relative;
+    z-index: 1;
     &__wrapper {
-        // min-height: 100vh;
+        &--full {
+            max-height: 680px;
+            height: 100vh;
+            background-image: url(../img/bg-2.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            position: relative;
+            .banner {
+                height: 100%;
+                margin: 0 auto;
+                &__item {
+                    background: transparent;
+                    height: 100%;
+                    align-items: center;
+                }
+                &__content{
+                    text-align: left;
+                    color: $white;
+                    h1, p {
+                        color: $white;
+                    }
+                    h1 {
+                        margin-bottom: 20px;
+                        em {
+                            position: relative;
+                            padding-left: 34px;
+                            &:before {
+                                position: absolute;
+                                top: 0;
+                                left: 10px;
+                                height: 100%;
+                                width: 10px;
+                                background: #00ccff;
+                                content: "";
+                                display: block;
+                                transform: skewX(-15deg);
+                            }
+                        }
+                    }
+                }
+            }
+            &:before {
+                content: "";
+                display: block;
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                background: rgba($colBlk, 0.2);
+            }
+        }
     }
     &__item {
         padding: 100px 0;
@@ -13,7 +65,7 @@
     &__content {
         text-align: center;
         p {
-		    @include font-size(27px);
+		    @include font-size(22px);
         }
     }
 }
